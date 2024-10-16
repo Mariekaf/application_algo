@@ -79,20 +79,57 @@ public class application {
 		System.out.println("le factoriel de"+" "+n+" "+"est"+" "+fact );
 		return fact;
 	}
-	public static int somme_premier_carre(int n) {
-		int somme=0;
-		for(int i=1;i<=n;i++) {
-			
-			if(n%i==0) {
-				System.out.println("i="+i);
+	public static boolean premier(int n) {
+	
+			for(int i=2;i<n;i++) {
+				if(n%i==0) {
+					return false;
+				}
 				
+			}
+			return true;
+			
+		
+	}
+	public static int somme_carre_premier(int n) {
+		int som=0;
+		for(int i=1;i<=n;i++) {
+			if(premier(i)) {
+				
+				System.out.println("i:"+i);
+				som =som+(i*i);
+				int a=i*i;
+				System.out.println("i*i="+a);
+				System.out.println("som"+som);
 			}
 			
 		}
-		
-		return somme;
+		System.out.println(som);
+		return n;
+	}
+	public static boolean premier(int n,int i) {
+		 i=(int) Math.sqrt(n);
+		while(i>1) {
+			if(n==1) {
+				return true;
+			}else {
+				if(n%i==0) {
+					return false;
+				}
+				premier(n,i-1);
+			}
+		}
+		return true;
+	}
+	 
+	public static void afficher(int n) {
+		int i=1;
+		if(premier(n,i)) {
+			System.out.println("il s'agit d'un nombre peremier");
+		}else{System.out.println("il ne s'agit pas d'un nombre premier");}
 		
 	}
+
 	
 	public static void main(String[] args) {
 		somme(2,5);
@@ -101,7 +138,8 @@ public class application {
 		facto(12);
 		facto2(12);
 		facto_rec(12);
-		somme_premier_carre(9);
+		somme_carre_premier(9);
+		afficher(3);
 		
 
 	}
