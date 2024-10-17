@@ -1,5 +1,7 @@
 package recurcivité_itteration;
 
+import java.util.Scanner;
+
 public class application {
 
 	
@@ -125,13 +127,64 @@ public class application {
 	public static void afficher(int n) {
 		int i=1;
 		if(premier(n,i)) {
-			System.out.println("il s'agit d'un nombre peremier");
+			System.out.println("il s'agit d'un nombre premier");
 		}else{System.out.println("il ne s'agit pas d'un nombre premier");}
 		
 	}
+	public static boolean positif(int n) {
+		if(n<=0) {
+			return false;
+		}
+		return true;
+	}
+	public static int somme_elmnt(int T[]) {
+		int sommeT=0;
+		int i=0;
+	for(i=0;i<T.length;i++){
+			if(positif(T[i])) {
+				sommeT= sommeT+T[i];
+				
+			}
+		}
+		System.out.println("la somme est"+" "+sommeT);
+		return sommeT;
+	}
+	public static int sommeElmntRec(int T[], int i) {
+        if (i < 0) {
+            return 0;
+        }
+        if (positif(T[i])) {
+            return T[i] + sommeElmntRec(T, i - 1);
+        } else {
+            return sommeElmntRec(T, i - 1);
+        }
+    }
+	public static boolean palindrome(char expression[],int i,int j) {
+
+		if (i >= j) {
+            return true; 
+		}
+			if(expression[i]!=expression[j]) {
+				return false;
+			}
+			return palindrome( expression, i+1,j-1);
+			
+		
+		
+	}
+	public static void afficherpal(char expression[]) {
+	
+		if(palindrome( expression, 0,expression.length-1)){
+			System.out.println("il s'agit d'un palindrome");
+		}else{System.out.println("il ne s'agit pas d'palindrome");}
+		
+	}
+		
 
 	
 	public static void main(String[] args) {
+		int T[]={1,-5,6,2,-1,0,-2,6};
+		
 		somme(2,5);
 		somme2(2,5);
 		somme_rec(2,5);
@@ -140,7 +193,26 @@ public class application {
 		facto_rec(12);
 		somme_carre_premier(9);
 		afficher(3);
-		
+		//somme_elmnt(T);
+		int somme = sommeElmntRec(T, T.length - 1);
+        System.out.println("La somme des éléments positifs est : " + somme);
+	
+        Scanner scanner = new Scanner(System.in);
+   
+        System.out.print("Entrez une chaîne de caractères : ");
+        String chaine = scanner.nextLine();
+ 
+        char[] expression = chaine.toCharArray();
+
+        System.out.print("Le tableau de caractères est : ");
+        for (char c : expression) {
+            System.out.print(c + " ");
+        }
+        System.out.print(" ");
+     
+  
+        scanner.close();
+        afficherpal( expression) ;
 
 	}
 

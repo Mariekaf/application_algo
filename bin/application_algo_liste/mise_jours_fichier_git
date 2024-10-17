@@ -1,0 +1,6 @@
+
+cd chemin/vers/votre/dossier
+git status
+git add .
+git commit -m "Votre message de commit"
+git push origin main

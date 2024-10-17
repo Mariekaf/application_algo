@@ -28,10 +28,11 @@ class file {
     	  current.next=NewNode;
        }
     }
-    
-     
 
-    
+
+
+
+
 
     // Méthode pour ajouter un nœud en debut de la liste
     public void defiler() {
